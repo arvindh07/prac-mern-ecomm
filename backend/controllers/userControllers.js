@@ -29,7 +29,7 @@ exports.loginUser = catchAsyncErrors(async(req,res,next) => {
         return next(new ErrorHandler("Invalid email or password",400));
     }
 
-    const passwordMatch = user.comparePassword(password);
+    const passwordMatch = await user.comparePassword(password);
     if(!passwordMatch){
         return next(new ErrorHandler("Invalid email or password",400));
     }
